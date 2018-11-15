@@ -1,0 +1,26 @@
+﻿@model Customer
+
+<h4>Klient: @Model.Name @Model.Surname</h4>
+<div class="container">
+   
+    <div class="col-md-12">
+        <div>
+            <label class="text-center">@Model.Name</label>
+        </div>       
+        <div>
+            <label class="text-center">@Model.Surname</label>
+        </div>
+        <div>
+            <label class="text-center">@Model.Email</label>
+        </div>
+        <div>
+            <label class="text-center">@Model.City</label>
+        </div>
+        <div>
+            <a asp-action="Index" class="btn btn-primary">Powrót</a>
+        </div>
+        
+    </div>
+</div>
+
+

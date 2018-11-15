@@ -1,0 +1,71 @@
+﻿@model CustomerListViewModel
+
+<link href="~/css/table.css" rel="stylesheet" />
+<div class="bg-pimary m-1 p-1 text-white"><h4>Klienci</h4></div>
+@using (Html.BeginForm())
+{
+    <p>
+        Wpisz imię: @Html.TextBox("SearchString")
+        <input type="submit" value="Szukaj"  class="btn btn-warning"/>
+    </p>
+}
+<table class="table table-sm table-responsive" id="tab">
+    <thead>
+        <tr>
+            <th>
+                Imię
+            </th>
+            <th>
+                Nazwisko
+            </th>
+            <th>
+                E-mail
+            </th>
+            <th>
+                Miasto
+            </th>
+            <th>
+                Akcja
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model.Customers)
+        {
+            <tr>
+                <td>@user.Name</td>
+                <td>@user.Surname</td>
+                <td>@user.Email</td>
+                <td>@user.City</td>
+                <td>
+                    <form asp-action="Delete" method="post" asp-route-id="@user.Id">
+                        <a asp-action="Edit" class="btn btn-primary" asp-route-id="@user.Id">Edytuj</a>
+                        <a asp-action="Details" class="btn btn-warning" asp-route-id="@user.Id">Szczegóły</a>
+                        <button type="submit" class="btn btn-danger">Usuń</button>
+                    </form>
+                    
+                </td>
+            </tr>
+        }
+        </tbody>
+
+</table>
+<div class="container">
+    <div class="center-block">
+        <a class="btn btn-success" asp-action="Create">Dodaj klienta</a>
+    </div>
+</div>
+<br />
+
+<div page-model="@Model.PageInfo"
+     page-action="Index"
+     page-class-enabled="true"
+     page-class="btn"
+     page-class-normal="btn-secondary"
+     page-class-selected="btn-primary"
+     class="btn-group pull-left m-1"></div>
+
+@section Scripts{
+<script src="~/js/table.js"></script>
+
+}
