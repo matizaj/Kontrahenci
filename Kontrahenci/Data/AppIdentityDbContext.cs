@@ -14,6 +14,5 @@ namespace Kontrahenci.Data
         {
         }
 
-        public DbSet<Customer> Customers { get; set; }
     }
 }
